@@ -6,7 +6,7 @@
 
 require 'spec_helper'
 
-describe 'lamp_demo::default' do
+describe 'lamp_demo::php' do
 
   context 'When all attributes are default, on an unspecified platform' do
 

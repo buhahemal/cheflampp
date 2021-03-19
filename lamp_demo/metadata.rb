@@ -4,5 +4,5 @@ maintainer_email 'you@example.com'
 license          'all_rights'
 description      'Installs/Configures lamp_demo'
 long_description 'Installs/Configures lamp_demo'
-version          '0.1.1'
+version          '1.0.0'
 

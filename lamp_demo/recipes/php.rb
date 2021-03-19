@@ -1,0 +1,39 @@
+#
+# Cookbook Name:: lamp_demo
+# Recipe:: php
+#
+# Copyright (c) 2021 The Authors, All Rights Reserved.
+package "php" do
+  action :install
+end
+
+package "php-pear" do
+  action :install
+end
+
+package "php-mysql" do
+  action :install
+end
+
+package "libapache2-mod-php" do
+  action :install
+end
+
+cookbook_file "/etc/php/7.2/cli/php.ini" do
+  source "chef-php.ini"
+  mode "0644"
+  notifies :restart, "service[apache2]" 
+end 
+
+execute "chownlog" do
+  command "chown www-data /var/log/php"
+  action :nothing 
+end 
+
+directory "/var/log/php" do
+  action :create
+  notifies :run, "execute[chownlog]" 
+end
+cookbook_file "/var/www/html/example.com/public_html/info.php" do
+  source "info.php"
+end
